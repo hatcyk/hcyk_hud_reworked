@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 56, 189, 248;
+  --secondary: 14, 165, 233;
+  --accent: 249, 115, 22;
+  --background: 17, 24, 39;
+  --surface: 31, 41, 55;
+  --text: 255, 255, 255;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: transparent;
+  color: rgb(var(--text));
+  overflow: hidden;
+  user-select: none;
+}
+
+@layer components {
+  .hud-container {
+    @apply fixed inset-0 pointer-events-none;
+  }
+
+  .hud-module {
+    @apply absolute bg-surface/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-white/10;
+  }
+
+  .hud-module-draggable {
+    @apply cursor-move pointer-events-auto;
+  }
+
+  .hud-bar {
+    @apply h-2 rounded-full overflow-hidden relative;
+  }
+
+  .hud-bar-fill {
+    @apply absolute top-0 left-0 h-full transition-all duration-300 ease-out;
+  }
+
+  .hud-text {
+    @apply text-white/90 text-sm font-medium;
+  }
+
+  .hud-icon {
+    @apply w-5 h-5 text-white/80;
+  }
+}
