@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --primary: 56, 189, 248;
@@ -28,7 +26,7 @@ body {
   }
 
   .hud-module {
-    @apply absolute bg-surface/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-white/10;
+    @apply backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-white/10 bg-gray-900/80;
   }
 
   .hud-module-draggable {
@@ -36,7 +34,7 @@ body {
   }
 
   .hud-bar {
-    @apply h-2 rounded-full overflow-hidden relative;
+    @apply h-2 rounded-full overflow-hidden relative bg-black/40;
   }
 
   .hud-bar-fill {
@@ -49,5 +47,399 @@ body {
 
   .hud-icon {
     @apply w-5 h-5 text-white/80;
+  }
+
+  .status-bar {
+    @apply flex items-center gap-3 p-3 min-w-52;
+  }
+
+  .status-bar-health {
+    @apply bg-red-500;
+  }
+
+  .status-bar-armor {
+    @apply bg-blue-500;
+  }
+
+  .status-bar-stamina {
+    @apply bg-green-500;
+  }
+
+  .status-bar-hunger {
+    @apply bg-orange-500;
+  }
+
+  .status-bar-thirst {
+    @apply bg-cyan-500;
+  }
+
+  .minimap-container {
+    @apply w-64 h-64 rounded-full overflow-hidden border-4 border-white/20 relative;
+  }
+
+  .hud-bottom-left {
+    @apply fixed bottom-6 left-6 flex flex-col gap-3;
+  }
+
+  .hud-bottom-right {
+    @apply fixed bottom-6 right-6;
+  }
+
+  .hud-top-right {
+    @apply fixed top-6 right-6 flex flex-col gap-3 items-end;
+  }
+
+  .hud-top-left {
+    @apply fixed top-6 left-6 flex flex-col gap-3;
+  }
+
+  .hud-bottom-center {
+    @apply fixed bottom-6 left-1/2 transform -translate-x-1/2;
+  }
+
+  .dev-panel {
+    @apply fixed top-4 left-1/2 transform -translate-x-1/2 bg-black/90 text-white p-4 rounded-lg z-50 pointer-events-auto;
+  }
+
+  /* New animations for rebuilt HUD */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .slide-in-up {
+    animation: slideInUp 0.6s ease-out forwards;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  /* Enhanced glassmorphism effects */
+  .glass-panel {
+    @apply bg-black/20 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-panel-strong {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/20;
+  }
+
+  /* Status indicators */
+  .status-critical {
+    @apply bg-red-900/40 border-red-500/50 animate-pulse;
+  }
+
+  .status-warning {
+    @apply bg-yellow-900/30 border-yellow-500/40;
+  }
+
+  .status-normal {
+    @apply bg-black/30 border-white/10;
+  }
+
+  /* Vehicle HUD specific styles */
+  .vehicle-panel {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl;
+  }
+
+  /* Enhanced circular status styles */
+  .status-ring {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  .status-critical {
+    animation: critical-pulse 1s infinite;
+  }
+
+  @keyframes critical-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Dragging styles */
+  .dragging {
+    cursor: grabbing !important;
+    user-select: none;
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Status panel animations */
+  .status-panel-enter {
+    animation: statusPanelEnter 0.8s ease-out forwards;
+  }
+
+  @keyframes statusPanelEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px) scale(0.9);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translateX(-20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  /* Glow effects for critical status */
+  .glow-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Responsive design helpers */
+  @media (max-width: 1920px) {
+    .hud-scale-lg {
+      transform: scale(0.9);
+    }
+  }
+
+  @media (max-width: 1600px) {
+    .hud-scale-md {
+      transform: scale(0.8);
+    }
+  }
+
+  @media (max-width: 1366px) {
+    .hud-scale-sm {
+      transform: scale(0.7);
+    }
+  }
+
+  /* Minimalistic status indicators */
+  .status-minimal {
+    @apply bg-black/20 backdrop-blur-xl border border-white/5 rounded-2xl shadow-xl;
+  }
+
+  .status-minimal:hover {
+    @apply bg-black/30 scale-105;
+  }
+
+  /* Smooth transitions for all elements */
+  .hud-element {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Compact spacing utilities */
+  .compact-panel {
+    @apply p-3 space-y-2;
+  }
+
+  .compact-panel-lg {
+    @apply p-4 space-y-3;
+  }
+
+  /* Enhanced backdrop blur for better readability */
+  .glass-minimal {
+    @apply bg-black/20 backdrop-blur-xl border border-white/5;
+  }
+
+  .glass-minimal-hover {
+    @apply hover:bg-black/30 hover:border-white/10;
+  }
+
+  /* Enhanced vehicle HUD animations */
+  @keyframes emergency-flash {
+    0%, 50% { background-color: rgba(239, 68, 68, 0.3); }
+    25%, 75% { background-color: rgba(59, 130, 246, 0.3); }
+  }
+
+  @keyframes indicator-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+  }
+
+  @keyframes danger-pulse {
+    0%, 100% { 
+      opacity: 1; 
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.8; 
+      transform: scale(1.05);
+    }
+  }
+
+  .emergency-flash {
+    animation: emergency-flash 1s infinite;
+  }
+
+  .indicator-blink {
+    animation: indicator-blink 1s infinite;
+  }
+
+  .danger-pulse {
+    animation: danger-pulse 2s infinite;
+  }
+
+  /* Smooth transitions for vehicle elements */
+  .vehicle-element {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .vehicle-element:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Custom Slider Styles */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .slider::-webkit-slider-track {
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 2px solid #1e40af;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    background: #60a5fa;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 2px solid #1e40af;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(55, 65, 81, 0.3);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.7);
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation-fill-mode: both;
+  }
+
+  .slide-in-from-right-2 {
+    animation: slide-in-from-right-2 0.3s ease-out;
+  }
+
+  .slide-in-from-right-4 {
+    animation: slide-in-from-right-4 0.3s ease-out;
+  }
+
+  @keyframes slide-in-from-right-2 {
+    from {
+      transform: translateX(8px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-right-4 {
+    from {
+      transform: translateX(16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }
