@@ -20,9 +20,6 @@ body {
   user-select: none;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   html, body {
