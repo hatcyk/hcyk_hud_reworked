@@ -4,3 +4,231 @@
   padding: 2rem;
   text-align: center;
 }
+
+/* Disable transitions during dragging for better performance */
+.react-draggable-dragging * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Smooth scrolling for the dev panel */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Ultra smooth scrolling - 5x smoother */
+.ultra-smooth-scroll {
+  scroll-behavior: smooth;
+  /* Webkit specific smooth scrolling enhancement */
+  -webkit-overflow-scrolling: touch;
+  /* Force smooth scrolling with longer duration */
+  scroll-snap-type: y proximity;
+  /* Reduce scroll speed for smoother feel */
+  overscroll-behavior: contain;
+}
+
+/* Enhanced smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+  /* Force hardware acceleration for all elements */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Ultra smooth element base class */
+.ultra-smooth-element {
+  /* Optimize rendering performance */
+  will-change: transform, opacity;
+  /* Enhanced hardware acceleration */
+  transform: translate3d(0, 0, 0);
+  /* Smooth transitions with better easing */
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ultra smooth button interactions */
+.ultra-smooth-button {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, color, transform, box-shadow;
+}
+
+.ultra-smooth-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ultra-smooth-button:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Ultra smooth hover effects */
+.ultra-smooth-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: background-color, transform, box-shadow;
+}
+
+.ultra-smooth-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Optimize for smooth dragging */
+.react-draggable-dragging {
+  z-index: 10000;
+  /* Add subtle shadow during drag */
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 10px 10px rgba(0, 0, 0, 0.04));
+}
+
+.react-draggable-dragging .drag-handle {
+  cursor: grabbing !important;
+  user-select: none !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Smooth dragging with momentum */
+.react-draggable {
+  /* Add subtle momentum when dragging stops */
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Remove transitions during active dragging */
+.react-draggable.dragging,
+.react-draggable.dragging * {
+  transition: none !important;
+}
+
+/* Smooth drag handle feedback */
+.drag-handle {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.drag-handle:active {
+  transform: scale(0.99);
+}
+
+/* Ultra smooth CSS animations */
+@keyframes ultra-smooth-fade {
+  0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ultra-smooth-slide-in {
+  0% { 
+    transform: translateX(-100%) scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translateX(0) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ultra-smooth-fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.animate-in {
+  animation: ultra-smooth-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ultra smooth input and form elements */
+input, button, select {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: border-color, box-shadow, transform;
+}
+
+input:focus, button:focus, select:focus {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Range slider ultra smooth */
+input[type="range"] {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+input[type="range"]:hover {
+  transform: scaleY(1.2);
+}
+
+/* Toggle switch ultra smooth */
+.toggle-switch {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.toggle-switch:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar with ultra smooth styling */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  /* Smooth scrollbar transitions */
+  transition: scrollbar-color 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  transition: width 0.3s ease;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+  transform: scaleX(1.2);
+  border-radius: 8px;
+}
+
+/* Performance optimization for backdrop blur */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  /* Optimize blur rendering */
+  will-change: backdrop-filter;
+}
+
+/* Optimize rendering performance */
+.pointer-events-auto {
+  pointer-events: auto;
+  isolation: isolate;
+  /* Force layer creation for smooth interactions */
+  transform: translateZ(0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
